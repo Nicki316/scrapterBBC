@@ -15,12 +15,13 @@ titlelist = []
 for title in titles:
     titlelist.append(title.getText())
     
-tag_list = []
+taglist = []
 urls = soup.find_all('a', {'class': 'qa-heading-link lx-stream-post__header-link'})
 for url in urls:
-    sub_response = requests.get('https://www.bbb.com'+ url.get('href'), verify = False)
+    sub_response = requests.get('https://www.bbc.com'+ url.get('href'), verify = False)
     sub_soup = BeautifulSoup(sub_response.text,'lxml')
     tags = sub_soup.find_all('li',{'class':'bbc-1msyfg1 e1hq59l0'})
     for tag in tags:
-        tag_list.append(tag.getText())
-        print (tag.getText())
+        taglist.append(tag.getText())
+
+print(taglist)
